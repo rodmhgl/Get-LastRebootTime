@@ -48,15 +48,3 @@ function Get-LastRebootTime
     }
 }
 #endregion
-
-#TODO: 
-# This error occurs when you run against a machine that does not have PowerShell 5
-# Or maybe there's another cause - look this up
-#Get-CimInstance : The WS-Management service cannot process the request. A DMTF resource URI was used to access a
-#non-DMTF class. Try again using a non-DMTF resource URI.
-#At C:\Scripts\Get-LastRebootTime\Get-LastRebootTime.ps1:40 char:16
-#+ ...      return Get-CimInstance -Class Win32_OperatingSystem -ComputerNam ...
-#+                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-#    + CategoryInfo          : NotSpecified: (root\cimv2:Win32_OperatingSystem:String) [Get-CimInstance], CimException
-#    + FullyQualifiedErrorId : HRESULT 0x80338139,Microsoft.Management.Infrastructure.CimCmdlets.GetCimInstanceCommand
-#    + PSComputerName        : trivirt13

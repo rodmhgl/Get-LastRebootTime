@@ -15,7 +15,7 @@ Describe Get-LastRebootTime {
     
         It 'Should not accept Null ComputerName Mandatory params' {
             #{Get-LastRebootTime} | Should Throw
-            {Get-LastRebootTime -computername $null } | Should throw
+            { Get-LastRebootTime -computername $null } | Should throw
         }
 
         It 'Should return a System.DateTime object' {
@@ -24,17 +24,17 @@ Describe Get-LastRebootTime {
         }
        
         It 'Should accept ServerName as an alias for ComputerName' {
-            {Get-LastRebootTime -servername localhost } | Should not throw 
+            { Get-LastRebootTime -servername localhost } | Should not throw 
         }
 
         It 'Should accept pipeline input' {
-            "localhost","localhost","localhost" | Get-LastRebootTime
+            { "localhost","localhost","localhost" | Get-LastRebootTime } | should not throw 
         }
 
         It 'Should accept pipeline input by property name' {
             $object = new-object -TypeName PSObject | select fake, unnecessary, computername
             $object.computername = 'localhost'
-            $object | Get-LastRebootTime
+            { $object | Get-LastRebootTime } | should not throw 
         }
 
         It 'Should accept parameters by position' {
@@ -50,7 +50,7 @@ Describe Get-LastRebootTime {
                 'class' -eq 'Win32_ComputerSystem';
                 'ErrorAction' -eq 'Stop'; 
             }
-            Get-LastRebootTime #} | Should not throw 
+            { Get-LastRebootTime } | Should not throw 
             Assert-VerifiableMocks
         }
     } # end Context
